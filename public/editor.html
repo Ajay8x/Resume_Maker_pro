@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resume Maker</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<header>
+  <h1>Resume Maker</h1>
+  <div class="ats-container">ATS Score: <span id="ats-score">0</span>%</div>
+  <div>
+    <select id="template">
+      <option value="modern">Modern</option>
+      <option value="classic">Classic</option>
+      <option value="minimal">Minimal</option>
+    </select>
+    <button id="reset" class="secondary">Reset</button>
+    <button id="print">Print / Save PDF</button>
+  </div>
+</header>
+
+<main>
+<section class="form">
+  <div class="drag-help">↕ Drag any section up/down to change its order. Use ↑ ↓ too. The preview and Print / PDF use the same order.</div>
+
+  <div id="section-editor" class="section-editor">
+
+    <section class="editor-section" draggable="true" data-section="personal">
+      <div class="section-bar"><span class="section-drag">☷ Personal Information</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <input id="name" placeholder="Full Name">
+      <input id="role" placeholder="Job Title / Target Role">
+      <div class="grid"><input id="email" placeholder="Email"><input id="phone" placeholder="Phone"></div>
+      <input id="location" placeholder="City, State, Country">
+      <div class="grid"><input id="linkedin" placeholder="LinkedIn URL (optional)"><input id="github" placeholder="GitHub URL (optional)"></div>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="summary">
+      <div class="section-bar"><span class="section-drag">☷ Professional Summary</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <textarea id="summary" placeholder="Professional Summary"></textarea>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="skills">
+      <div class="section-bar"><span class="section-drag">☷ Skills</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <input id="skills" placeholder="Python, SQL, Machine Learning, Excel">
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="experience">
+      <div class="section-bar"><span class="section-drag">☷ Experience</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <div id="experience"></div><button class="add" data-type="experience">+ Add Experience</button>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="projects">
+      <div class="section-bar"><span class="section-drag">☷ Projects</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <div id="projects"></div><button class="add" data-type="projects">+ Add Project</button>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="education">
+      <div class="section-bar"><span class="section-drag">☷ Education</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <div id="education"></div><button class="add" data-type="education">+ Add Education</button>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="certifications">
+      <div class="section-bar"><span class="section-drag">☷ Certifications</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <div id="certifications"></div><button class="add" data-type="certifications">+ Add Certification</button>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="internships">
+      <div class="section-bar"><span class="section-drag">☷ Internship / Training</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <div id="internships"></div><button class="add" data-type="internships">+ Add Internship</button>
+    </section>
+
+
+
+    <section class="editor-section" draggable="true" data-section="achievements">
+      <div class="section-bar"><span class="section-drag">☷ Achievements / Awards</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <div id="achievements"></div><button class="add" data-type="achievements">+ Add Achievement</button>
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="languages">
+      <div class="section-bar"><span class="section-drag">☷ Languages</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <input id="languages" placeholder="Hindi, English, etc.">
+    </section>
+
+    <section class="editor-section" draggable="true" data-section="hobbies">
+      <div class="section-bar"><span class="section-drag">☷ Hobbies / Interests</span><span class="section-moves"><button type="button" class="section-up">↑</button><button type="button" class="section-down">↓</button></span></div>
+      <input id="hobbies" placeholder="Reading, Traveling, Coding (optional)">
+    </section>
+
+  </div>
+</section>
+
+<section class="preview-wrap"><div id="resume" class="resume modern"></div></section>
+</main>
+<script src="editor.js"></script>
+</body>
+</html>

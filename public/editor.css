@@ -1,5 +1,5 @@
 *{box-sizing:border-box}
-body{margin:0;background:#eef1f6;color:#182230;font-family:Arial,sans-serif}
+body{margin:0;background:#8296b7;color:#182230;font-family:Arial,sans-serif}
 header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 header h1{margin:0;font-size:20px}
 select,button{padding:8px 11px;border:1px solid #d0d5dd;border-radius:7px;background:white}

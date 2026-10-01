@@ -28,6 +28,102 @@ let state = {
 
 // Built-in Sample Profiles for Quick Demo
 const sampleProfiles = {
+  ajay: {
+    name: "Ajay Singh",
+    role: "Full Stack Web Developer",
+    email: "ajaysingh8xx@gmail.com",
+    phone: "(+91) 7991735503",
+    location: "Mirzapur, Uttar Pradesh, India",
+    linkedin: "https://linkedin.com/in/ajay8x",
+    github: "https://github.com/Ajay8x",
+    website: "",
+    summary: "BCA student and aspiring Full Stack Web Developer with hands-on experience in React.js, Node.js, Express.js, MongoDB, SQL, and RESTful APIs. Skilled in developing responsive web applications, integrating modern frontend architectures with scalable backend services, and working with Git, GitHub, Agile methodologies, and software testing.",
+    skills: "React.js, Node.js, Express.js, MongoDB, JavaScript (ES6+), HTML5, CSS3, SQL, RESTful APIs, Git, GitHub, Java, C++, C, Agile Methodologies, Software Testing, VS Code",
+    languages: "English (Fluent), Hindi (Native)",
+    hobbies: "Learning Emerging Web Tech, Competitive Problem Solving, Building Full-Stack Apps",
+    experience: [
+      {
+        company: "Visiomatix Media Pvt. Ltd.",
+        position: "Full Stack Developer Intern",
+        period: "September 2026 - Present",
+        location: "Remote / On-site",
+        description: "• Engineered responsive, high-performance features across frontend and backend systems.\n• Developed and consumed secure RESTful APIs with Node.js, Express.js, and MongoDB.\n• Collaborated closely with cross-functional development team following Agile sprints and code reviews."
+      }
+    ],
+    projects: [
+      {
+        title: "Wanderlust Travel – Full Stack Rental Web Platform",
+        tech: "Node.js, Express.js, MongoDB, EJS, Bootstrap, Cloudinary",
+        link: "https://github.com/Ajay8x/Wanderlust",
+        description: "• Architected a comprehensive full-stack property rental web platform with user authentication and session management.\n• Implemented complete CRUD workflows for property listings, user reviews, ratings, and image hosting via Cloudinary.\n• Designed fully responsive UI optimized across desktop and mobile form factors."
+      },
+      {
+        title: "Weather Web App using React & Material UI",
+        tech: "React.js, Material UI, OpenWeatherMap API, JavaScript",
+        link: "https://github.com/Ajay8x/Weather-App",
+        description: "• Developed dynamic real-time weather tracking application leveraging OpenWeatherMap REST APIs.\n• Rendered live temperature, humidity, atmospheric pressure, and wind speed with Material UI cards and icons."
+      },
+      {
+        title: "Full-Stack Library Management System",
+        tech: "Node.js, Express.js, MongoDB, Cloudinary, REST APIs",
+        link: "https://github.com/Ajay8x/Library-Management-System",
+        description: "• Engineered complete library management application managing book catalogs, student issuance records, and fines.\n• Integrated secure cloud image uploads and dynamic search indexing."
+      },
+      {
+        title: "Simon Says Interactive Game",
+        tech: "JavaScript, HTML5, CSS3, Web Audio",
+        link: "https://github.com/Ajay8x/Simon-Says-Game",
+        description: "• Built an interactive memory puzzle game with real-time sequence generator, level tracking, and audio-visual feedback."
+      }
+    ],
+    education: [
+      {
+        school: "Vindhya Gurukul College, MGKVP",
+        degree: "Bachelor of Computer Applications (BCA)",
+        year: "2023 - 2026",
+        location: "Varanasi, UP",
+        description: "Core Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Web Technologies."
+      },
+      {
+        school: "Kisan Inter College",
+        degree: "Class XII (Science - Physics, Chemistry, Math)",
+        year: "2022 - 2023",
+        location: "Rajgarh, Mirzapur"
+      },
+      {
+        school: "Kisan Inter College",
+        degree: "Class X (High School)",
+        year: "2020 - 2021",
+        location: "Rajgarh, Mirzapur"
+      }
+    ],
+    certifications: [
+      {
+        name: "Full Stack Web Development (Delta)",
+        issuer: "Apna College",
+        year: "2023"
+      },
+      {
+        name: "Cyber Security & Ethical Hacking (Web App Penetration Testing)",
+        issuer: "DROP Organization",
+        year: "March 2024"
+      },
+      {
+        name: "CCC (Course on Computer Concepts)",
+        issuer: "NIELIT",
+        year: "April 2022"
+      }
+    ],
+    internships: [],
+    achievements: [
+      {
+        title: "Full Stack Web Developer Certification & Project Milestones",
+        year: "2024",
+        description: "Successfully built and deployed multiple production-ready full stack web applications."
+      }
+    ]
+  },
+
   dev: {
     name: "Alex Morgan",
     role: "Senior Full-Stack Software Engineer",
@@ -1315,10 +1411,10 @@ function init() {
     try {
       loadState(JSON.parse(rawData));
     } catch (e) {
-      loadState(sampleProfiles.dev);
+      loadState(sampleProfiles.ajay);
     }
   } else {
-    loadState(sampleProfiles.dev);
+    loadState(sampleProfiles.ajay);
   }
 }
 

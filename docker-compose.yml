@@ -1,0 +1,10 @@
+services:
+  resume-maker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: resume-forge-pro:latest
+    container_name: resume-forge-pro
+    ports:
+      - "8080:80"
+    restart: unless-stopped

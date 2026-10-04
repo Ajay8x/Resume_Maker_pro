@@ -15,12 +15,39 @@ A modern, high-performance ATS-friendly interactive resume builder with multi-te
 
 ## 🛠️ Getting Started
 
+### 1. Local Node.js Development
 ```bash
 # Install dependencies
 npm install
 
 # Run the local server
-node server.js
+npm start
+```
+Open `http://localhost:3000` in your browser.
+
+---
+
+### 2. Running with Docker 🐳
+
+#### Option A: Docker Compose (Recommended)
+```bash
+docker compose up -d
 ```
 
-Open your browser at `http://localhost:3000`.
+#### Option B: Docker CLI
+```bash
+# Build the Docker image
+docker build -t resume-forge-pro:latest .
+
+# Run the container
+docker run -d -p 8080:80 --name resume-forge-pro resume-forge-pro:latest
+```
+
+Open `http://localhost:8080` in your browser.
+
+#### Stopping the Container
+```bash
+docker compose down
+# or
+docker stop resume-forge-pro && docker rm resume-forge-pro
+```

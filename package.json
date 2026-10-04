@@ -4,7 +4,10 @@
   "description": "",
   "main": "editor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "docker:build": "docker build -t resume-forge-pro:latest .",
+    "docker:run": "docker run -d -p 8080:80 --name resume-forge-pro resume-forge-pro:latest",
+    "docker:compose": "docker compose up -d"
   },
   "keywords": [],
   "author": "",

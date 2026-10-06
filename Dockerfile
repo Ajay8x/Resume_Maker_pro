@@ -1,21 +1,37 @@
-# Production-ready lightweight Nginx image
-FROM nginx:alpine
+# Multi-stage Dockerfile for React + Node.js + PostgreSQL Resume Builder
+FROM node:20-alpine AS builder
 
-# Remove default nginx static assets and config
-RUN rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy package files and install all dependencies
+COPY package*.json ./
+RUN npm install
 
-# Copy application static files from public folder
-COPY public/ /usr/share/nginx/html/
+# Copy source code and build React frontend
+COPY . .
+RUN npm run build
 
-# Expose standard HTTP port
-EXPOSE 80
+# Production Runner stage
+FROM node:20-alpine AS runner
 
-# Healthcheck to ensure Nginx is healthy
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
+WORKDIR /app
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+COPY package*.json ./
+RUN npm install --omit=dev
+
+# Copy server files and built React dist
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/server.js ./server.js
+COPY --from=builder /app/db.js ./db.js
+COPY --from=builder /app/init.sql ./init.sql
+
+EXPOSE 3000
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget --quiet --tries=1 --spider http://localhost:3000/api/health || exit 1
+
+CMD ["node", "server.js"]

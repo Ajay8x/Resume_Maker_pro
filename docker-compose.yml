@@ -1,10 +1,45 @@
 services:
-  resume-maker:
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:16-alpine
+    container_name: resume-forge-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: resume_maker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d resume_maker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node.js Resume Maker Web Application
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     image: resume-forge-pro:latest
-    container_name: resume-forge-pro
-    ports:
-      - "8080:80"
+    container_name: resume-forge-app
     restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: resume_maker
+      DB_USER: postgres
+      DB_PASSWORD: postgrespassword
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+    driver: local
